@@ -1,0 +1,37 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title class="w-100">ESP32 Sensor Dashboard</mat-card-title>
+    <mat-card-subtitle class="w-100">Preview of Grafana sensor real-time data panels</mat-card-subtitle>
+    <div class="device-selector">
+      <mat-form-field appearance="outline">
+        <mat-label>Select Device</mat-label>
+        <mat-select [(ngModel)]="selectedDevice" (selectionChange)="onDeviceChange()">
+          <mat-option *ngFor="let device of devices" [value]="device.name">
+            {{ device.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Humidity, Temperature, Presence -->
+    <div class="iframe-row d-flex flex-wrap align-items-center flex-column flex-lg-row justify-content-center">
+      <div class="iframe-container flex-1 m-2" *ngFor="let url of iframeUrls.slice(0, 3); let i = index">
+        <h3 class="iframe-title w-100 text-center">
+          {{ ['Humidity', 'Temperature', 'Presence'][i] }}
+        </h3>
+        <iframe [src]="url" width="450" height="200" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <!-- Motion, Fall, Fall_distance -->
+    <div class="iframe-row d-flex flex-wrap align-items-center flex-column flex-lg-row justify-content-center">
+      <div class="iframe-container flex-1 m-2" *ngFor="let url of iframeUrls.slice(3, 6); let i = index">
+        <h3 class="iframe-title w-100 text-center">
+          {{ ['Motion', 'Fall', 'Fall_Distance'][i] }}
+        </h3>
+        <iframe [src]="url" width="450" height="200" frameborder="0"></iframe>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

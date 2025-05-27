@@ -1,0 +1,66 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <!-- Header with title and filters -->
+    <div class="hstack align-items-center flex-column flex-lg-row">
+      <div class="w-100">
+        <mat-card-title>Sensor Data</mat-card-title>
+      </div>
+      <div class="m-l-auto filter-controls d-flex align-items-center">
+        
+        <!-- Device Selector --> 
+<mat-form-field appearance="outline" style="margin-right: 1rem;">
+  <mat-label>Select Device</mat-label>
+  <mat-select [(value)]="selectedDevice" (selectionChange)="loadSensorData()">
+    <mat-option *ngFor="let device of devices" [value]="device.name">
+      {{ device.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+        <mat-form-field class="theme-select" appearance="outline" style="width: 7.5rem">
+          
+          <mat-label>Select Date</mat-label>
+          <input
+            matInput
+            type="date"
+            [value]="selectedDate | date: 'yyyy-MM-dd'"
+            (change)="onDateChange($event)"
+          />
+        </mat-form-field>
+        <mat-form-field class="theme-select" appearance="outline" style="margin-left: 1rem; width: 5.5rem;">
+          <mat-label>Start Time</mat-label>
+          <input
+            matInput
+            type="time"
+            [(ngModel)]="startTime"
+            (change)="onTimeChange()"
+          />
+        </mat-form-field>
+        <mat-form-field class="theme-select" appearance="outline" style="margin-left: 1rem; width: 5.5rem;">
+          <mat-label>End Time</mat-label>
+          <input
+            matInput
+            type="time"
+            [(ngModel)]="endTime"
+            (change)="onTimeChange()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div *ngFor="let chart of charts">
+      <h3 class="chart-title">{{ chart.type }}</h3>
+      <div class="chart-container">
+        <canvas
+          baseChart
+          [data]="{ datasets: chart.data }"
+          [options]="chart.options"
+          [type]="'line'"
+          style="height: 20rem;"
+        ></canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
