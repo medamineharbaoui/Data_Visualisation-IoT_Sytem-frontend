@@ -7,6 +7,9 @@ The frontend of the IoT Fall Detection System is built with **Angular 19**, desi
 
 ### 1. Real-Time Dashboard
 - **Core Feature**: Provides real-time visualization of IoT device data using **Grafana** dashboard components, optimized for low-latency monitoring of critical metrics.
+
+![real-time-dashboard](./Screenshots/Real-Time_dashboard.png)
+
 - Displays the following metrics for the fall detection system:
   - Temperature (°C)
   - Humidity (%)
@@ -23,6 +26,11 @@ The frontend of the IoT Fall Detection System is built with **Angular 19**, desi
 
 ### 2. History Dashboard
 - Displays historical data using **Chart.js** graphs for the same metrics as the Real-Time Dashboard.
+
+![history-dashboard-1](./Screenshots/History-dashboard.png)
+
+![history-dashboard-2](./Screenshots/History-dashboard_2.png)
+
 - Includes filters for customized data views:
   - Select a specific device.
   - Choose a date .
@@ -30,6 +38,9 @@ The frontend of the IoT Fall Detection System is built with **Angular 19**, desi
 - Retrieves historical data from the backend’s sensor-data-service, stored in a MySQL database.
 
 ### 3. Devices Page
+
+![devices-table](./Screenshots/Devices_table.png)
+
 - Manages IoT devices to ensure compatibility with MQTT topics:
   - **Add**: Register a new device, ensuring the device name matches the MQTT topic used by the IoT device (e.g., `<device-name>/esp32`).
   - **Edit**: Update existing device details.
@@ -39,6 +50,8 @@ The frontend of the IoT Fall Detection System is built with **Angular 19**, desi
 ### 4. Login Page
 - Authenticates users with credentials, integrating with the backend’s JWT-based user-service.
 - Redirects to the registration page for new users.
+
+![login-page](./Screenshots/login.png)
 
 ### 5. Register Page
 - Enables account creation with email verification via Google SMTP, handled by the backend’s user-service.
@@ -56,6 +69,11 @@ The frontend of the IoT Fall Detection System is built with **Angular 19**, desi
 - **RESTful APIs**: For communication with the backend’s user-service and sensor-data-service.
 - **MQTT**: For real-time data streaming to Grafana, enabling dynamic topic updates based on device selection.
 
+# Mirco-Services and MQTT
+
+![micro-services](./Screenshots/Micro_services.png)
+
+![mqtt-service](./Screenshots/MQTT_Explorer.png)
 
 ## Link to the Backend Repository
    ```bash
